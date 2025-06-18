@@ -6,3 +6,9 @@ sky:
     database: sky_take_out
     username: usr
     password: 12345678
+  alioss:
+    endpoint: oss-cn-hongkong.aliyuncs.com
+    access-key-id:
+    bucket-name: gargamelzhou
+    access-key-secret:
+
