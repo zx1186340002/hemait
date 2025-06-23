@@ -33,6 +33,9 @@
         order by s.create_time desc
     </select>
 
+<select id="list">
+    select * from setmeal and name like concat('%',#{name},'%') and category_id = #{categoryId} and status = #{status}
+    </select>
         <update id="update" parameterType="Setmeal">
             update setmeal
             <set>
