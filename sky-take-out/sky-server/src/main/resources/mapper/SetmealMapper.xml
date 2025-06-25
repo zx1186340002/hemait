@@ -67,5 +67,8 @@
             where id = #{id}
         </update>
 
+<select id="countByMap" resultType="java.lang.Integer">
+    select count(id) from setmeal and status = #{status} and category_id = #{categoryId}
+</select>
 
 </mapper>

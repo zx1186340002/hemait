@@ -36,5 +36,38 @@
         </set>
         where id = #{id}
     </update>
+    
+    <select id="sumByMap" resultType="java.lang.Double">
+        select sum(amount) from orders
+        <where>
+            <if test="begin != null"> order time &gt; #{begin}</if>
+            <if test="end != null"> order time &lt; #{end}</if>
+        <if test="status != null"> and status = #{status}</if>
+        </where>
+    </select>
+    
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from order
+        <where>
+            <if test="begin != null"> order time &gt; #{begin}</if>
+            <if test="end != null"> order time &lt; #{end}</if>
+            <if test="status != null"> and status = #{status}</if>
+        </where>
+    </select>
+
+    <select id="getSakesTop" resultType="com.sky.dto.GoodsSalesDTO">
+    select  od.name , count(od.number) number from  order_detail od, oders o
+    where   od.order_id = o.id and o.status = 5
+    <if test="begin != null">
+        and o.order_time &gt; #{begin}
+    </if>
+        <if test="end != null">
+           and o.order_time &lt;  #{end}
+        </if>
+    group by od.name
+    order by number
+    limit 0 ,10
+    </select>
+
 
 </mapper>
